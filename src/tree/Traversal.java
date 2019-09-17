@@ -53,7 +53,7 @@ public class Traversal {
                 treeNode=treeNode.leftNode;
             }
             if (!stack.isEmpty()) {
-                stack.pop();
+                treeNode = stack.pop();
                 treeNode = treeNode.rightNode;
             }
         }
@@ -77,15 +77,21 @@ public class Traversal {
 
     public static void postOrderTraversalWithStack(TreeNode root){
         Stack<TreeNode> stack = new Stack<TreeNode>();
-        TreeNode treeNode = root;
-        TreeNode last;
-        while (treeNode != null||!stack.isEmpty()){
-            while (treeNode!=null){
-                stack.push(treeNode);
-                treeNode=treeNode.leftNode;
+        TreeNode current = root;
+        TreeNode last = null;
+        while (current != null||!stack.isEmpty()){
+            while (current!=null){
+                stack.push(current);
+                current=current.leftNode;
             }
-            if (!stack.isEmpty()) {
-
+            current=stack.peek();
+            if (current.rightNode == null || current.rightNode == last) {
+                System.out.println(current.data);
+                stack.pop();
+                last=current;
+                current=null;
+            }else {
+                current=current.rightNode;
             }
         }
     }
