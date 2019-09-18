@@ -14,7 +14,7 @@ public class All {
         LinkedList<Integer> list = new LinkedList<>(Arrays.asList(new Integer[]{
                 null,1,null,2,null,3,null,4,5,6,7,8,9,null
         }));
-        TreeNode treeNode = BinaryTree.creatInBinaryTree(list);
+        TreeNode treeNode = BinaryTree.creatPreBinaryTree(list);
         Traversal.inOrderTraversal(treeNode);
     }
 }
