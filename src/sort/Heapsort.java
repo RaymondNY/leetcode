@@ -20,7 +20,7 @@ public class Heapsort {
         arr[parentIndex]=tem;
 
     }
-
+    //升序，最大堆
     public static void sort(int[] arr){
         for (int i = (arr.length-2)/2; i >=0; i--) {
             downAdjust(arr,i,arr.length);
