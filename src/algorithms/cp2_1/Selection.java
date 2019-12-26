@@ -9,12 +9,14 @@ public class Selection {
         for (int i = 0; i < len; i++) {
             int min = i;
             for (int j = i+1; j < len; j++) {
+                //比较次数N(N-1)/2
                 if (less(arr[min],arr[j])) {
 
                 }else {
                     min=j;
                 }
             }
+            //交换次数N
             exch(arr,i,min);
         }
         System.out.println(Arrays.toString(arr));
@@ -27,13 +29,5 @@ public class Selection {
         Integer t = a[i];
         a[i] = a[j];
         a[j] = t;
-    }
-    public static boolean isSorted(int[] a) {
-        for (int i = 0; i < a.length; i++) {
-            if (less(a[i], a[i - 1])) {
-                return false;
-            }
-        }
-        return true;
     }
 }
