@@ -6,7 +6,7 @@ import java.util.Arrays;
 
 public class Merge {
     public static void main(String[] args) {
-        int[] arr = {12,456,84,56,445,45841,1255,6589,1123,166,1654};
+        int[] arr = {12,456,84,56,445,5555,1255,6589,1123,166,1654};
 //        mergeSort(arr,0,arr.length);
 //        System.out.println(Arrays.toString(arr));
         st(arr);
@@ -52,6 +52,7 @@ public class Merge {
                 hign=Math.min(low+2*s,n);
                 if (mid < hign) {
                     merge(data,low,mid,hign);
+                    System.out.println(Arrays.toString(data));
                     System.out.println(low+"--"+mid+"--"+hign);
                 }
                 low+=2*s;
