@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class Insertion {
     public static void main(String[] args) {
-        int[] arr = {11,53,5,74,23,523,32,1};
+        int[] arr = {11,53,5,74,23,523,32,1,92};
         int len = arr.length;
         for (int i = 1; i < len; i++) {
             for (int j = i; j > 0 && less(arr[j], arr[j - 1]); j--) {
