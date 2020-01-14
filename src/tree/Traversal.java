@@ -1,9 +1,6 @@
 package tree;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 public class Traversal {
 
@@ -17,9 +14,9 @@ public class Traversal {
         if (node == null) {
             return;
         }
-        inOrderTraversal(node.leftNode);
+        inOrderTraversal(node.left);
         System.out.println(node.data);
-        inOrderTraversal(node.rightNode);
+        inOrderTraversal(node.right);
     }
 
     public static void preOrderTraversal(TreeNode node){
@@ -27,16 +24,16 @@ public class Traversal {
             return;
         }
         System.out.println(node.data);
-        preOrderTraversal(node.leftNode);
-        preOrderTraversal(node.rightNode);
+        preOrderTraversal(node.left);
+        preOrderTraversal(node.right);
     }
 
     public static void postOrderTraversal(TreeNode node){
         if (node == null) {
             return;
         }
-        postOrderTraversal(node.leftNode);
-        postOrderTraversal(node.rightNode);
+        postOrderTraversal(node.left);
+        postOrderTraversal(node.right);
         System.out.println(node.data);
     }
 
@@ -54,10 +51,10 @@ public class Traversal {
             if (treeNode!= null) {
                 stack.push(treeNode);
                 list.add(treeNode.data);
-                treeNode = treeNode.leftNode;
+                treeNode = treeNode.left;
             }else {
                 TreeNode pop = stack.pop();
-                treeNode = pop.rightNode;
+                treeNode = pop.right;
             }
         }
     }
@@ -69,11 +66,11 @@ public class Traversal {
         while (treeNode != null||!stack.isEmpty()){
             if (treeNode!= null) {
                 stack.push(treeNode);
-                treeNode=treeNode.leftNode;
+                treeNode=treeNode.left;
             }else {
                 TreeNode pop = stack.pop();
                 list.add(pop.data);
-                treeNode = pop.rightNode;
+                treeNode = pop.right;
             }
         }
 
@@ -87,12 +84,55 @@ public class Traversal {
             if (treeNode!= null) {
                 stack.push(treeNode);
                 list.add(treeNode.data);
-                treeNode = treeNode.rightNode;
+                treeNode = treeNode.right;
             }else {
                 TreeNode pop = stack.pop();
-                treeNode = pop.leftNode;
+                treeNode = pop.left;
             }
         }
         Collections.reverse(list);
+    }
+    public static List cexubianli(TreeNode root){
+        List list = new ArrayList();
+        if (root == null) {
+            return null;
+        }
+        Queue<TreeNode> q = new LinkedList<>();
+        q.offer(root);
+        while (!q.isEmpty()){
+            TreeNode poll = q.poll();
+            list.add(poll.data);
+            if (poll.left!=null) {
+                q.offer(poll.left);
+            }
+            if (poll.right!=null) {
+                q.offer(poll.right);
+            }
+        }
+        return list;
+    }
+    /**
+     * 104. 二叉树的最大深度
+     */
+    public static void maxDepth(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+        Queue<TreeNode> q = new LinkedList<>();
+        q.offer(root);
+        int deep=0;
+        while (!q.isEmpty()){
+            deep++;
+            int len = q.size();
+            for (int i = 0; i < len; i++) {
+                TreeNode poll = q.poll();
+                if (poll.left!=null) {
+                    q.offer(poll.left);
+                }
+                if (poll.right!=null) {
+                    q.offer(poll.right);
+                }
+            }
+        }
     }
 }

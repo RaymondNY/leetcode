@@ -2,8 +2,8 @@ package tree;
 
 public class TreeNode {
     int data;
-    TreeNode leftNode;
-    TreeNode rightNode;
+    TreeNode left;
+    TreeNode right;
     boolean isFirst;
     TreeNode(int data){
         this.data=data;

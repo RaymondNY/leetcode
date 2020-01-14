@@ -16,8 +16,8 @@ public class BinaryTree {
         Integer integer = list.removeFirst();
         if (integer!=null) {
             node=new TreeNode(integer);
-            node.leftNode=creatPreBinaryTree(list);
-            node.rightNode=creatPreBinaryTree(list);
+            node.left=creatPreBinaryTree(list);
+            node.right=creatPreBinaryTree(list);
         }
         return node;
     }
