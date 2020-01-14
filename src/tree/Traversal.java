@@ -1,5 +1,8 @@
 package tree;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Stack;
 
 public class Traversal {
@@ -44,55 +47,52 @@ public class Traversal {
      * @return
      */
     public static void preOrderTraversalWithStack(TreeNode root){
-        Stack<TreeNode> stack = new Stack<TreeNode>();
+        Stack<TreeNode> stack = new Stack<>();
         TreeNode treeNode = root;
+        List list = new ArrayList();
         while (treeNode != null||!stack.isEmpty()){
-            while (treeNode!=null){
-                System.out.println(treeNode.data);
+            if (treeNode!= null) {
                 stack.push(treeNode);
-                treeNode=treeNode.leftNode;
-            }
-            if (!stack.isEmpty()) {
-                treeNode = stack.pop();
-                treeNode = treeNode.rightNode;
+                list.add(treeNode.data);
+                treeNode = treeNode.leftNode;
+            }else {
+                TreeNode pop = stack.pop();
+                treeNode = pop.rightNode;
             }
         }
     }
 
     public static void inOrderTraversalWithStack(TreeNode root){
-        Stack<TreeNode> stack = new Stack<TreeNode>();
+        Stack<TreeNode> stack = new Stack<>();
         TreeNode treeNode = root;
+        List list = new ArrayList();
         while (treeNode != null||!stack.isEmpty()){
-            while (treeNode!=null){
-               stack.push(treeNode);
-               treeNode=treeNode.leftNode;
-            }
-            if (!stack.isEmpty()) {
+            if (treeNode!= null) {
+                stack.push(treeNode);
+                treeNode=treeNode.leftNode;
+            }else {
                 TreeNode pop = stack.pop();
-                System.out.println(pop.data);
-                treeNode=pop.rightNode;
+                list.add(pop.data);
+                treeNode = pop.rightNode;
             }
         }
+
     }
 
     public static void postOrderTraversalWithStack(TreeNode root){
-        Stack<TreeNode> stack = new Stack<TreeNode>();
-        TreeNode current = root;
-        TreeNode last = null;
-        while (current != null||!stack.isEmpty()){
-            while (current!=null){
-                stack.push(current);
-                current=current.leftNode;
-            }
-            current=stack.peek();
-            if (current.rightNode == null || current.rightNode == last) {
-                System.out.println(current.data);
-                stack.pop();
-                last=current;
-                current=null;
+        Stack<TreeNode> stack = new Stack<>();
+        TreeNode treeNode = root;
+        List list = new ArrayList();
+        while (treeNode != null||!stack.isEmpty()){
+            if (treeNode!= null) {
+                stack.push(treeNode);
+                list.add(treeNode.data);
+                treeNode = treeNode.rightNode;
             }else {
-                current=current.rightNode;
+                TreeNode pop = stack.pop();
+                treeNode = pop.leftNode;
             }
         }
+        Collections.reverse(list);
     }
 }
